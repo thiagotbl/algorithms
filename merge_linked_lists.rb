@@ -13,15 +13,9 @@ def merge_n_lists(lists)
 end
 
 def merge_lists(list_1, list_2)
-  if list_1.data < list_2.data
-    head = list_1
-    list_1 = list_1.next
-  else
-    head = list_2
-    list_2 = list_2.next
-  end
+  before_start = LinkedListNode.new(-1)
 
-  node = head
+  node = before_start
   while list_1 != nil && list_2 != nil
     if list_1.data < list_2.data
       node.next = list_1
@@ -40,7 +34,7 @@ def merge_lists(list_1, list_2)
     node.next = list_1
   end
 
-  head
+  before_start.next
 end
 
 list_1 = LinkedListNode.from_array([11, 41, 51])
@@ -57,5 +51,8 @@ merged_list = merge_n_lists([list_1, list_2, list_3])
 puts "Merged list:"
 merged_list.print
 
-# Time complexity: // TODO
-# Space complexity: // TODO
+# let k be the number of lists
+# let n be the max size of a list
+
+# Time complexity: O(n * k)
+# Space complexity: O(1)
